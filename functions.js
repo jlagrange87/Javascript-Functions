@@ -6,9 +6,20 @@
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
-function checkData(inputString) {
-	// your code goes here
-}
+	function checkData(inputString) {
+		if(typeof inputString !== "string") {
+			throw "Invalid Input";
+		}
+
+		if (inputString.length === 3){
+			return  true;
+		}
+		else {
+			return  false;
+		}
+	}
+	var isLengthThree = chechkData("LOL");
+	console.log(isLengthThree);
 
 /*
  * PROBLEM `concatenateArrays`: (easy)
@@ -18,9 +29,25 @@ function checkData(inputString) {
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 function concatenateArrays(a, b) {
-	// your code goes here
+	if(typeof a !== "object" && typeof b !== "object" ) {
+		throw "Invalid Input";
+	}
+	for(var i=0; i<a.length; i++) {
+		if(typeof a[i] !== "number") {
+			throw "Invalid Input"
+		}
+	}
+	for(var i=0; i<b.length; i++) {
+		if(typeof b[i] !== "number") {
+			throw "Invalid Input"
+		}
+	}
+	var nArray= a.concat(b);
+	return nArray;
 }
-
+	var arrayA=[1,2];
+	var arrayB=[3,4];
+	concatenateArrays(arrayA,arrayB);
 /*
  * PROBLEM `fixProperNoun`: (easy)
  * Proper nouns always begin with a capital letter, followed by small letters.
@@ -31,9 +58,16 @@ function concatenateArrays(a, b) {
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 function fixProperNoun(noun) {
-	// your code goes here
-}
+	if(typeof noun !== "string") {
+		throw "Invalid Input";
+	}
 
+	var fixt = noun.charAt(0).toUpperCase() + noun.substr(1).toLowerCase();
+	return fixt;
+}
+	var name = "jOsh"
+		fixProperNoun(name);
+		console.log(fixProperNoun(name));
 /*
  * PROBLEM `sortLetters`: (easy)
  * Write a function called `sortLetters` that returns a string that sorts all 
@@ -42,8 +76,15 @@ function fixProperNoun(noun) {
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 function sortLetters(inputString) {
-	// your code goes here
+	if( typeof inputString !== "string"){
+		throw "Invalid Input";
+	}
+
+	var sorted = inputString.split("").sort().join("");
+	return sorted;
 }
+	var letters = "edcba";
+	sortLetters(letters);
 
 /*
  * PROBLEM `absVal`: (easy)
@@ -53,7 +94,13 @@ function sortLetters(inputString) {
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 function absVal(integer) {
-	// your code goes here
+	if(typeof integer !== "number" || isNaN(integer)) {
+		throw "Invalid Input";
+	}
+	if(integer < 0){
+		integer *= -1
+	}
+	return integer;
 }
 
 /*
@@ -63,6 +110,18 @@ function absVal(integer) {
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+ function myMin(a, b) {
+ 	if(typeof a !== "number" || typeof b !== "number") {
+ 		throw "Invalid Input";
+ 	}
+ 	if( a === NaN ||  b === NaN) {
+ 		throw "Invalid Input"
+ 	}
+ 	var giveLowest = Math.min(a, b);
+ 	return giveLowest;
+
+ }
+console.log(myMin(10,-102));
 
 /*
  * PROBLEM `myMax`: (easy) - Actual Interview Question
@@ -73,6 +132,15 @@ function absVal(integer) {
  *
  * Insane mode: do this without using a for loop.
  */
+// even though I found the apply (which is supposed to bring it back as an array according to the internet), it immediately didn't mention that "this" is automatically an argument directly after. SO I kept getting -Infinity, I had to dig for a minute to get that tip for null cancelling out the invisible "this"
+
+function myMax(num) {
+	var maxNum = Math.max.apply(null,num);
+  return maxNum;
+}
+
+console.log(myMax([2,5,6,10]));
+
 
 /*
  * PROBLEM `getMonth`: (easy)
@@ -85,6 +153,24 @@ function absVal(integer) {
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+function getMonth(num){
+	var Months = [
+	"",
+	"January", 
+	"February",
+	"March", 
+	"April", 
+	"May", 
+	"June",
+	"July",	 
+	"August",
+	"September",
+	"October",
+	"November",
+	"December"
+	] 
+	return Months[num];
+}
 
 /*
  * PROBLEM `randomElement`: (medium)
@@ -98,6 +184,7 @@ function absVal(integer) {
  * student names and returns an array of randomly selected pairs of students
  * (array of arrays).
  */
+ 
 
 /*
  * PROBLEM `sumSquares`: (medium)
