@@ -18,8 +18,7 @@
 			return  false;
 		}
 	}
-	var isLengthThree = chechkData("LOL");
-	console.log(isLengthThree);
+	
 
 /*
  * PROBLEM `concatenateArrays`: (easy)
@@ -45,9 +44,7 @@ function concatenateArrays(a, b) {
 	var nArray= a.concat(b);
 	return nArray;
 }
-	var arrayA=[1,2];
-	var arrayB=[3,4];
-	concatenateArrays(arrayA,arrayB);
+
 /*
  * PROBLEM `fixProperNoun`: (easy)
  * Proper nouns always begin with a capital letter, followed by small letters.
@@ -65,9 +62,7 @@ function fixProperNoun(noun) {
 	var fixt = noun.charAt(0).toUpperCase() + noun.substr(1).toLowerCase();
 	return fixt;
 }
-	var name = "jOsh"
-		fixProperNoun(name);
-		console.log(fixProperNoun(name));
+
 /*
  * PROBLEM `sortLetters`: (easy)
  * Write a function called `sortLetters` that returns a string that sorts all 
@@ -121,7 +116,7 @@ function absVal(integer) {
  	return giveLowest;
 
  }
-console.log(myMin(10,-102));
+
 
 /*
  * PROBLEM `myMax`: (easy) - Actual Interview Question
@@ -139,7 +134,7 @@ function myMax(num) {
   return maxNum;
 }
 
-console.log(myMax([2,5,6,10]));
+
 
 
 /*
@@ -178,13 +173,47 @@ function getMonth(num){
  * returns one randomly selected value from that array.
  */
 
+function randomElement(array) {
+
+	var rand = array[Math.floor(Math.random()*array.length)];
+	return rand;
+
+};
+
 /*
  * PROBLEM `studentPairs`: (medium)
  * Create a javascript function called `studentPairs` that takes an array of
  * student names and returns an array of randomly selected pairs of students
  * (array of arrays).
  */
- 
+
+function studentPairs() {
+
+	var students = ["Josh", "Whitney", "Marshall", "Donald", "Max", "Christine", "Doyle", "Paula"];
+	var group = [];
+	
+		while(students.length >= 2) {
+			var peeps =  [];
+			var select1 = Math.random()*students.length;
+			select1--;
+			peeps.push(students.splice(select1, 1)[0]);
+
+			var select2 = Math.random()*students.length;
+			select2--;
+			peeps.push(students.splice(select2, 1)[0]);
+
+			group.push(peeps);
+
+		}
+		if(students.length >= 2) {
+		group[group.length-1].push(peeps[0]);
+	}
+	
+	return group;
+};
+
+console.log(studentPairs());
+
 
 /*
  * PROBLEM `sumSquares`: (medium)
@@ -193,6 +222,17 @@ function getMonth(num){
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+function sumSquares(x){
+	var one = x*(x+1)*(2*x+1)
+	var answer = one / 6;
+	return(answer);
+		if(x !== "number"){
+			throw "Input Invalid";
+		}
+		if(x == NaN){
+			throw "Input Invalid";
+		}
+}
 
 /* 
  * PROBLEM `findMaxDiff`: (medium)
@@ -201,7 +241,20 @@ function getMonth(num){
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+function findMaxDiff(nums){ 
+	 var max = 0; 
+	 var diff; 
+	 var index = 0;
+	for(var i=1; i<nums.length; i++) {
+	    diff = Math.abs(nums[i] - nums[i-1]);
+	    if(diff > max) {
+	        max = diff;
+	        index = i-1;
+	    }
+	}
 
+	return max;
+}
 /*
  * PROBLEM `insertDashes`: (medium)
  * Write a function called `insertDashes` that transforms a given sentence into
@@ -210,7 +263,13 @@ function getMonth(num){
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+function insertDashes(string){
+	var answer = string.split("").join("-");
+	var re = /- -/g;
+	answer = answer.replace(re," ");
+	return answer;
 
+}
 /* 
  * PROBLEM `mySubstring`mySubstring: (medium)
  * Implement a function called `mySubstring` that can output the substring of 
@@ -223,6 +282,11 @@ function getMonth(num){
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 
+ function mySubstring(string,a,b){
+ 	var answer = string.slice(a,b+1)
+	return answer;
+ }
+
 /*
  * PROBLEM `splitSwap`: (medium)
  * Write a function called `splitSwap` that swaps two halves of a given array.
@@ -234,6 +298,13 @@ function getMonth(num){
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 
+ function splitSwap(array){
+ 	var second = array.slice(array.length/2);
+ 	var first = array.slice(0,array.length/2);
+ 	var answer = second.concat(first);
+ 	return answer;
+ }
+
 /*
  * PROBLEM `smallMultiples`: (medium)
  * For given n and k write a function called `smallMultiples` that returns the
@@ -244,6 +315,13 @@ function getMonth(num){
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+function smallMultiples(n,k){
+	var counter = 0;
+	for(var i = 2; k * i <= n; i++){
+		counter = counter + 1;
+	}
+	return counter;
+}
 
 /* 
  * PROBLEM `rot13`: (hard)
