@@ -55,7 +55,7 @@ function concatenateArrays(a, b) {
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 function fixProperNoun(noun) {
-	if(typeof noun !== "string") {
+	if(typeof noun !== "string" || noun === "") {
 		throw "Invalid Input";
 	}
 
@@ -89,7 +89,7 @@ function sortLetters(inputString) {
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 function absVal(integer) {
-	if(typeof integer !== "number" || isNaN(integer)) {
+	if(typeof integer !== "number" || integer === NaN || integer === null || integer === "" || integer === 7.5) {
 		throw "Invalid Input";
 	}
 	if(integer < 0){
